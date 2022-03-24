@@ -1,0 +1,34 @@
+{
+  "name": "gatsby-blog-post-gen",
+  "version": "0.0.1",
+  "description": "cli tool for generating gatsby blog post",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node lib/index.js",
+    "publish": "npm run build && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaesiumY/gatsby-post-gen.git"
+  },
+  "keywords": [
+    "gatsby",
+    "blog",
+    "post",
+    "javascript",
+    "typescript",
+    "cli",
+    "generator"
+  ],
+  "author": "caesiumy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CaesiumY/gatsby-post-gen/issues"
+  },
+  "homepage": "https://github.com/CaesiumY/gatsby-post-gen#readme",
+  "devDependencies": {
+    "typescript": "^4.6.2"
+  }
+}
