@@ -4,6 +4,9 @@
   "description": "cli tool for generating gatsby blog post",
   "main": "lib/bin/cli.js",
   "types": "lib/bin/cli.d.ts",
+  "bin": {
+    "create": "lib/bin/cli.js"
+  },
   "scripts": {
     "build": "tsc",
     "start": "npm run build && node lib/bin/cli.js",
@@ -30,6 +33,7 @@
   },
   "homepage": "https://github.com/CaesiumY/gatsby-post-gen#readme",
   "devDependencies": {
+    "@types/node": "^17.0.23",
     "typescript": "^4.6.2"
   },
   "dependencies": {
