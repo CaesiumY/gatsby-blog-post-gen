@@ -1,9 +1,6 @@
-import { program } from "commander";
+import log from "signale";
+import { prompt } from "inquirer";
 
 export default (async () => {
   console.log("hello world!");
-  // action
-  program.action((cmd) => console.log("✓ Running!!"));
-
-  program.parse(process.argv);
 })();
