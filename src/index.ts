@@ -4,6 +4,19 @@ import { existsSync } from "fs";
 
 const DEFAULT_CONTENTS_ADDRESS = "/content/blog";
 
+const getContentAddr = () => {
+  const customArgIndex = process.argv.indexOf("--custom");
+  const customValueIndex = customArgIndex + 1;
+
+  if (customArgIndex === -1 || customValueIndex >= process.argv.length) {
+    return DEFAULT_CONTENTS_ADDRESS;
+  }
+
+  return process.argv[customValueIndex].startsWith("/")
+    ? process.argv[customValueIndex]
+    : `/${process.argv[customValueIndex]}`;
+};
+
 const getTitle = async (target: string) => {
   const answer = await prompt([
     {
@@ -15,7 +28,7 @@ const getTitle = async (target: string) => {
         if (value.includes("'")) return "Cannot use single quote";
 
         const sanitizedValue = value.toLowerCase().replace(/ +/g, "-");
-        const fileName = `${target}/${sanitizedValue}.mdx`;
+        const fileName = `${target}/${sanitizedValue}/index.mdx`;
 
         const isAlreadyExist = existsSync(fileName);
 
@@ -30,7 +43,10 @@ const getTitle = async (target: string) => {
 };
 
 export default (async () => {
+  const contentsAddr = getContentAddr();
+
   info("Run gatsby-blog-post-gen...");
+  info(`Current contents Directory: ${contentsAddr}`);
   start(`Let's create a new Blog Post!`);
 
   const title = await getTitle("");
@@ -39,5 +55,4 @@ export default (async () => {
   star("Go write your post!");
 
   console.log("process :>> ", process.cwd());
-  console.log("process.argv", process.argv);
 })();
